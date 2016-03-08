@@ -3452,22 +3452,21 @@ module.exports = 'ngFileUpload';
 },{"./dist/ng-file-upload-all":1}],3:[function(require,module,exports){
 'use strict';
 
-var _components = require('./components');
-
-var _components2 = _interopRequireDefault(_components);
-
 var _ngFileUpload = require('ng-file-upload');
 
 var _ngFileUpload2 = _interopRequireDefault(_ngFileUpload);
 
+var _components = require('./components');
+
+var _components2 = _interopRequireDefault(_components);
+
+var _controllers = require('./controllers');
+
+var _controllers2 = _interopRequireDefault(_controllers);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-angular.module('webFontmin', [
-
-//
-// 'assets.template.access',
-//
-_ngFileUpload2.default, _components2.default.name]);
+angular.module('webFontmin', [_ngFileUpload2.default, _components2.default.name, _controllers2.default.name]);
 
 setTimeout(function () {
   angular.element(document).ready(function () {
@@ -3475,7 +3474,7 @@ setTimeout(function () {
   });
 }, 1100);
 
-},{"./components":4,"ng-file-upload":2}],4:[function(require,module,exports){
+},{"./components":4,"./controllers":7,"ng-file-upload":2}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3492,7 +3491,9 @@ var _uploadBox2 = _interopRequireDefault(_uploadBox);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = angular.module('app.components', []).directive('showcase', _showcase2.default).directive('uploadBox', _uploadBox2.default);
+exports.default = angular.module('app.components', []);
+// .directive('showcase', showcase)
+// .directive('uploadBox', uploadBox);
 
 },{"./showcase":5,"./upload-box":6}],5:[function(require,module,exports){
 'use strict';
@@ -3519,7 +3520,10 @@ exports.default = function ($location) {
   // /////////////
 
   // @ngInject
-  function controller($scope) {}
+  function controller($scope) {
+    var vm = this;
+    vm.text = '道可道，非常道';
+  }
 
   function getTpl() {
     var tpl = '\n      <div class="box clearfix">\n        <div class="box-edit pull-left">\n          <textarea placeholder="道可道，非常道" autofocus="autofocus" ng-model="vm.text"></textarea>\n        </div>\n        <div class="box-preview pull-left">{{vm.text}}</div>\n      </div>\n    ';
@@ -3553,7 +3557,6 @@ exports.default = function ($location) {
 
   // @ngInject
   function controller($scope, Upload, $http) {
-    console.log('333333333');
     var vm = this;
 
     vm.uploadFiles = function ($files) {
@@ -3585,5 +3588,46 @@ exports.default = function ($location) {
     return tpl;
   }
 };
+
+},{}],7:[function(require,module,exports){
+'use strict';
+
+// @ngInject
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = angular.module('controllers', [])
+
+// @ngInject
+.controller('AppController', ["$scope", "Upload", "$http", function ($scope, Upload, $http) {
+  console.log(333333);
+  var vm = this;
+
+  vm.text = '道可道，非常道';
+
+  vm.uploadFiles = function ($files) {
+    if (!$files || $files.length < 1) {
+      return;
+    }
+
+    Upload.upload({
+      url: 'upload-font',
+      data: {
+        file: $files[0],
+        text: vm.text
+      }
+    }).then(function (resp) {
+      console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+    }, function (resp) {
+
+      console.log('Error status: ' + resp.status);
+    }, function (evt) {
+
+      var progressPercentage = parseInt(100.0 * evt.loaded / evt.total, 10);
+      console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+    });
+  };
+}]);
 
 },{}]},{},[3]);

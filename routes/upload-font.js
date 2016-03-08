@@ -19,16 +19,16 @@ router.post('/', function (req, res, next) {
   rs.on('end', function () {
     console.log('end');
 
-    var text = '我说你是人间的四月天；笑响点亮了四面风；轻灵在春的光艳中交舞着变。';
+    console.log(req.body);
 
     // 初始化
     var fontmin = new Fontmin()
       .src(output)
       .use(rename('web-fontmin.ttf'))
 
-      // .use(Fontmin.glyph({ // 字型提取插件
-      //   text: text // 所需文字
-      // }))
+      .use(Fontmin.glyph({ // 字型提取插件
+        text: req.body.text // 所需文字
+      }))
       .use(Fontmin.ttf2eot()) // eot 转换插件
       .use(Fontmin.ttf2woff()) // woff 转换插件
       .use(Fontmin.ttf2svg()) // svg 转换插件

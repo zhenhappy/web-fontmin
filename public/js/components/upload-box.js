@@ -18,7 +18,6 @@ export default ($location) => {
 
   // @ngInject
   function controller($scope, Upload, $http) {
-    console.log('333333333');
     var vm = this;
 
     vm.uploadFiles = $files => {

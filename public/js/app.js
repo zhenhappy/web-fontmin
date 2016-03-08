@@ -1,15 +1,13 @@
 'use strict';
 
-import components from './components';
 import ngFileUpload from 'ng-file-upload';
+import components from './components';
+import controllers from './controllers';
 
 angular.module('webFontmin', [
-
-  //
-  // 'assets.template.access',
-  //
   ngFileUpload,
-  components.name
+  components.name,
+  controllers.name
 ]);
 
 setTimeout(function () {

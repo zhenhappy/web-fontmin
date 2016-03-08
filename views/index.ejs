@@ -27,9 +27,31 @@
 
   </head>
 
-  <body>
-    <upload-box></upload-box>
-    <showcase></showcase>
+  <body ng-controller="AppController as vm">
+
+    <!-- <showcase></showcase> -->
+    <!-- <upload-box></upload-box> -->
+
+    <div class="box clearfix">
+      <div class="box-edit pull-left">
+        <textarea placeholder="道可道，非常道" autofocus="autofocus" ng-model="vm.text"></textarea>
+      </div>
+      <div class="box-preview pull-left">{{vm.text}}</div>
+    </div>
+
+    <div class="upload-box">
+      <div
+        ngf-select="vm.uploadFiles($files)"
+        ngf-drop="vm.uploadFiles($files)"
+        class="drop-box"
+        ngf-drag-over-class="'dragover'"
+        ngf-multiple="true" >
+        +
+      </div>
+
+      <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+    </div>
+
 
     <!-- build:js /js/libs.min.js -->
     <script src="/bower_components/angular/angular.min.js"></script>

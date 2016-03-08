@@ -18,6 +18,8 @@ export default ($location) => {
 
   // @ngInject
   function controller($scope) {
+    var vm = this;
+    vm.text = '道可道，非常道';
   }
 
   function getTpl() {

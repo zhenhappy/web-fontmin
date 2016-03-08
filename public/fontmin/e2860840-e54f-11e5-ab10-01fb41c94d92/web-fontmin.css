@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "MFinance HK Bold";
+    src: url("/fontmin/e2860840-e54f-11e5-ab10-01fb41c94d92/web-fontmin.eot"); /* IE9 */
+    src: url("/fontmin/e2860840-e54f-11e5-ab10-01fb41c94d92/web-fontmin.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("/fontmin/e2860840-e54f-11e5-ab10-01fb41c94d92/web-fontmin.woff") format("woff"), /* chrome, firefox */
+    url("/fontmin/e2860840-e54f-11e5-ab10-01fb41c94d92/web-fontmin.ttf") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url("/fontmin/e2860840-e54f-11e5-ab10-01fb41c94d92/web-fontmin.svg#MFinance HK Bold") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+

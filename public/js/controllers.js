@@ -23,6 +23,12 @@ export default angular.module('controllers', [])
       }
     }).then(function (resp) {
       console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+      console.log(resp.data.style);
+
+      var newStyle = document.createElement('style');
+      newStyle.appendChild(document.createTextNode(resp.data.style));
+      document.head.appendChild(newStyle);
+
     }, function (resp) {
 
       console.log('Error status: ' + resp.status);

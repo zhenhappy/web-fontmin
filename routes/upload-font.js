@@ -7,11 +7,13 @@ var router = express.Router();
 var Fontmin = require('fontmin');
 var intoStream = require('into-stream');
 var rename = require('gulp-rename');
+var uuid = require('node-uuid');
 
 router.post('/', function (req, res, next) {
   var output = path.join(process.cwd(), 'public', 'uploads', req.files[0].originalname);
+  var id = uuid.v1();
 
-  var dest = path.join(process.cwd(), 'public', 'fonts');
+  var dest = path.join(process.cwd(), 'public', 'fontmin', id);
 
   var rs = intoStream(req.files[0].buffer);
   var ws = fs.createWriteStream(output);
@@ -20,6 +22,8 @@ router.post('/', function (req, res, next) {
     console.log('end');
 
     console.log(req.body);
+    var fontPath = '/fontmin/' + id + '/';
+    var cssPath = path.join(process.cwd(), 'public', 'fontmin', id, 'web-fontmin.css');
 
     // 初始化
     var fontmin = new Fontmin()
@@ -32,7 +36,9 @@ router.post('/', function (req, res, next) {
       .use(Fontmin.ttf2eot()) // eot 转换插件
       .use(Fontmin.ttf2woff()) // woff 转换插件
       .use(Fontmin.ttf2svg()) // svg 转换插件
-      .use(Fontmin.css()) // css 生成插件
+      .use(Fontmin.css({
+        fontPath: fontPath,
+      })) // css 生成插件
       .dest(dest);
 
     // 执行
@@ -40,8 +46,13 @@ router.post('/', function (req, res, next) {
       if (err) { // 异常捕捉
         console.error(err);
       }
+      console.log(cssPath);
 
-      console.log('done'); // 成功
+      fs.readFile(cssPath, "utf-8", function(err, data) {
+        console.log(data); // 成功
+        res.json({ style: data });
+      });
+
     });
 
     // ////////////////////////////////////
@@ -53,7 +64,6 @@ router.post('/', function (req, res, next) {
     throw err;
   });
 
-  res.json({ base64String: '1212' });
 });
 
 module.exports = router;

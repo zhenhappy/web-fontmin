@@ -33,6 +33,7 @@
   margin-top: 50px; }
   .box .box-edit,
   .box .box-preview {
+    font-size: 22px;
     width: 50%;
     height: 100%; }
   .box .box-edit textarea {
@@ -44,7 +45,17 @@
     .box .box-edit textarea:focus {
       outline: none; }
   .box .box-preview {
-    padding: 10px; }
+    padding: 10px;
+    font-family: 'web-fontmin'; }
+
+@font-face {
+  font-family: "web-fontmin";
+  src: url("/fonts/web-fontmin.eot");
+  /* IE9 */
+  src: url("/fonts/web-fontmin.eot?#iefix") format("embedded-opentype"), url("/fonts/web-fontmin.woff") format("woff"), url("/fonts/web-fontmin.ttf") format("truetype"), url("/fonts/web-fontmin.svg#Meiryo") format("svg");
+  /* iOS 4.1- */
+  font-style: normal;
+  font-weight: normal; }
 
 .clearfix:after {
   content: "\200B";

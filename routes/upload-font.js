@@ -6,34 +6,51 @@ var express = require('express');
 var router = express.Router();
 var Fontmin = require('fontmin');
 var intoStream = require('into-stream');
+var rename = require('gulp-rename');
 
 router.post('/', function (req, res, next) {
   var output = path.join(process.cwd(), 'public', 'uploads', req.files[0].originalname);
+
+  var dest = path.join(process.cwd(), 'public', 'fonts');
+
   var rs = intoStream(req.files[0].buffer);
   var ws = fs.createWriteStream(output);
-
+  rs.pipe(ws);
   rs.on('end', function () {
     console.log('end');
+
+    var text = '我说你是人间的四月天；笑响点亮了四面风；轻灵在春的光艳中交舞着变。';
+
+    // 初始化
+    var fontmin = new Fontmin()
+      .src(output)
+      .use(rename('web-fontmin.ttf'))
+
+      // .use(Fontmin.glyph({ // 字型提取插件
+      //   text: text // 所需文字
+      // }))
+      .use(Fontmin.ttf2eot()) // eot 转换插件
+      .use(Fontmin.ttf2woff()) // woff 转换插件
+      .use(Fontmin.ttf2svg()) // svg 转换插件
+      .use(Fontmin.css()) // css 生成插件
+      .dest(dest);
+
+    // 执行
+    fontmin.run(function (err, files, stream) {
+      if (err) { // 异常捕捉
+        console.error(err);
+      }
+
+      console.log('done'); // 成功
+    });
+
+    // ////////////////////////////////////
+
   });
 
   rs.on('error', function (err) {
     console.log(err);
-  });
-
-  rs.pipe(ws);
-
-  var fontmin = new Fontmin()
-    .src('fonts/*.ttf')
-    .dest('build/fonts');
-
-  fontmin.run(function (err, files) {
-    if (err) {
-      throw err;
-    }
-
-    console.log(files[0]);
-
-    // => { contents: <Buffer 00 01 00 ...> }
+    throw err;
   });
 
   res.json({ base64String: '1212' });

@@ -11,6 +11,12 @@ var runSequence = require('run-sequence');
 var opn = require('opn');
 var devip = require('dev-ip');
 var livereload = require('gulp-livereload');
+var rename = require('gulp-rename');
+var ngAnnotate = require('gulp-ng-annotate');
+var source = require('vinyl-source-stream');
+var browserify = require('browserify');
+var streamify = require('gulp-streamify');
+var regenerator = require('gulp-regenerator');
 
 process.env.NODE_ENV = 'development';
 process.env.PORT = 12306;
@@ -18,7 +24,7 @@ process.env.PORT = 12306;
 gulp.task('default', ['development']);
 
 gulp.task('development', function () {
-  return runSequence('copy', 'style', 'serve', 'watch', 'opn');
+  return runSequence('copy', 'style', 'bundle', 'serve', 'watch', 'opn');
 });
 
 gulp.task('style', function () {
@@ -30,9 +36,22 @@ gulp.task('style', function () {
     .pipe(livereload());
 });
 
+gulp.task('bundle', function () {
+  return browserify('./public/js/app.js')
+    .transform('babelify', { presets: 'es2015', compact: false })
+    .bundle()
+    .pipe(source('main.js'))
+    .pipe(ngAnnotate({ add: true }))
+    .pipe(streamify(regenerator({ includeRuntime: true })))
+    .pipe(rename('bundle.js'))
+    .pipe(gulp.dest('./public/js'))
+    .pipe(livereload());
+});
+
 gulp.task('watch', function () {
   livereload.listen(35728);
   gulp.watch('./public/sass/**/*.scss', ['style']);
+  gulp.watch('./public/js/**/*.js', ['bundle']);
 });
 
 // gulp.task('font', function () {

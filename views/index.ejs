@@ -1,21 +1,39 @@
 <!doctype html>
-<html>
+<html class="theme-next use-motion ">
 
   <head>
-    <title>
-      xgsdk首页
-    </title>
+
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="description" content="forsigner, 前端开发, 用户体验, 设计, frontend, design, nodejs"/>
+    <meta name="keywords" content="Hexo,next"/>
+    <title>web-fontmin</title>
+
+    <!-- build:css css/bundle.css -->
     <link rel='stylesheet' href='bower_components/normalize-css/normalize.css'/>
     <link rel='stylesheet' href='/css/app.css'/>
+    <!-- endbuild -->
+
+    <script type="text/javascript">
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+
   </head>
 
   <body>
-    <div class="container">
-      i
-    </div>
+    <upload-box></upload-box>
+    <showcase></showcase>
+
     <!-- build:js /js/libs.min.js -->
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/ng-file-upload/ng-file-upload-all.min.js"></script>
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/js/bundle.js" charset="utf-8"></script>
     <!-- endbuild -->
   </body>
 

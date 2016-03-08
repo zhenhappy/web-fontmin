@@ -5,8 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var multer  = require('multer');
+var uploadPath = path.join(__dirname, 'public', 'uploads');
+var upload = multer({ dest: uploadPath });
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var uploadFont = require('./routes/upload-font');
 
 var app = express();
 
@@ -29,6 +34,7 @@ if (app.get('env') === 'development') {
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/upload-font', upload.any(), uploadFont);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

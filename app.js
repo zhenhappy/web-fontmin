@@ -6,8 +6,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var multer  = require('multer');
-var uploadPath = path.join(__dirname, 'public', 'uploads');
-var upload = multer({ dest: uploadPath });
+
+// var uploadPath = path.join(__dirname, 'public', 'uploads');
+// var upload = multer({ dest: uploadPath });
+
+var storage = multer.memoryStorage();
+var upload = multer({ storage: storage });
 
 var routes = require('./routes/index');
 var users = require('./routes/users');

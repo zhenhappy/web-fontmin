@@ -1,13 +1,15 @@
 @import './_normalize.scss';
 @import './components/_index.scss';
 @import './_font.scss';
+@import './_calligraffitti-regular-webfont.scss';
+@import './_SentyZHAO.scss';
+@import './_SentyPea.scss';
 
-.clearfix:after
-{
-        content:"\200B";
-        display:block;
-        height:0;
-        clear:both;
+.clearfix:after {
+  content:"\200B";
+  display:block;
+  height:0;
+  clear:both;
 }
 .clearfix {
         *zoom:1;
@@ -33,7 +35,7 @@
 html,
 body {
   height: 100%;
-  background: #f7f7f7;
+  background: #fff;
   font-family: Verdana, "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
 }
 code,
@@ -75,4 +77,14 @@ a.btn-download {
 
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
+}
+.title {
+  margin-top: 40px;
+  margin-bottom: 0px;
+  line-height: 1em;
+  font-family: "calligraffitti-regular-webfont";
+}
+.slogan {
+  font-family: "SentyPea";
+  font-size: 18px;
 }

@@ -2,39 +2,47 @@
   overflow: hidden;
   width: 800px;
   height: 100%;
-  height: 500px;
+  height: 390px;
   margin: 50px auto;
   padding: 0;
   border-radius: 6px;
   background: #fff;
-  border: 1px solid #dfdfdf;
-  border-top: 1px solid #f0f0f0;
+  // border: 1px solid #dfdfdf;
+  // border-top: 1px solid #f0f0f0;
   //box-shadow: 0 10px 60px 0 rgba(0, 0, 0, .1);
   margin-top: 50px;
   .box-edit,
   .box-preview {
-    font-size: 20px;
-    width: 50%;
+    font-size: 24px;
+    width: 350px;
     height: 100%;
     line-height: 1.4em;
+    text-align: center;
   }
   .box-edit {
     textarea {
-      font-size: 20px;
+      text-align: center;
+      // background: lighten(#e4caa3, 20%);
+      font-size: 24px;
       width: 100%;
       height: 100%;
       padding: 10px;
       border: 0;
-      border-right: 1px solid #ddd;
+      // border-right: 1px solid #ddd;
+      line-height: 1.8em;
       &:focus {
         outline: none;
       }
     }
   }
   .box-preview {
-    padding: 10px;
+    // background: #f7f7f7;
     pre {
-      font-family: 'SentyZHAO';
+      height: 100%;
+      overflow-x: hidden;
+      padding: 10px;
+      font-family: "SentyZHAO";
+      line-height: 1.8em;
     }
   }
 

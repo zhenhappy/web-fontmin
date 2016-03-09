@@ -30,14 +30,18 @@
   <body ng-controller="AppController as vm">
 
     <div class="text-center">
-      <h1>Web Fontmin</h1>
+      <h1 class="title">Web Fontmin</h1>
+      <div class="slogan">
+        字体子集化，在线提取你需要的字体
+      </div>
+      <a class="hint hint--bottom" href="###">使用方法</a>
     </div>
 
     <div class="box clearfix">
       <div class="box-edit pull-left">
         <textarea placeholder="" autofocus="autofocus" ng-model="vm.text"></textarea>
       </div>
-      <div class="box-preview pull-left">
+      <div class="box-preview pull-right">
         <pre id="preview" ng-bind="vm.text"></pre>
       </div>
     </div>

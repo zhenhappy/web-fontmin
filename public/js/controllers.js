@@ -12,7 +12,14 @@ export default angular.module('controllers', [])
 
   vm.status = 'INIT'; // 'INIT' | 'UPLOADING' | 'SUCCESS' | 'ERROR'
 
-  vm.text = '道可道，非常道。\n名可名，非常名。';
+  vm.text = `从明天起，
+    做一个幸福的人,
+    喂马、劈柴，周游世界。
+    从明天起，
+    关心粮食和蔬菜。
+    我有一所房子，
+    面朝大海，春暖花开。
+  `;
 
   vm.style = {
 

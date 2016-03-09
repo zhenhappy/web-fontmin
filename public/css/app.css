@@ -366,7 +366,7 @@ th {
     border-radius: 6px;
     font-size: 40px;
     text-align: center;
-    line-height: 100px;
+    line-height: 92px;
     color: #ccc; }
     .upload-box .drop-box.dragover {
       background: #fcfcfc;
@@ -381,33 +381,35 @@ th {
   overflow: hidden;
   width: 800px;
   height: 100%;
-  height: 500px;
+  height: 390px;
   margin: 50px auto;
   padding: 0;
   border-radius: 6px;
   background: #fff;
-  border: 1px solid #dfdfdf;
-  border-top: 1px solid #f0f0f0;
   margin-top: 50px; }
   .box .box-edit,
   .box .box-preview {
-    font-size: 20px;
-    width: 50%;
+    font-size: 24px;
+    width: 350px;
     height: 100%;
-    line-height: 1.4em; }
+    line-height: 1.4em;
+    text-align: center; }
   .box .box-edit textarea {
-    font-size: 20px;
+    text-align: center;
+    font-size: 24px;
     width: 100%;
     height: 100%;
     padding: 10px;
     border: 0;
-    border-right: 1px solid #ddd; }
+    line-height: 1.8em; }
     .box .box-edit textarea:focus {
       outline: none; }
-  .box .box-preview {
-    padding: 10px; }
-    .box .box-preview pre {
-      font-family: 'SentyZHAO'; }
+  .box .box-preview pre {
+    height: 100%;
+    overflow-x: hidden;
+    padding: 10px;
+    font-family: "SentyZHAO";
+    line-height: 1.8em; }
 
 .spinner {
   text-align: center;
@@ -453,6 +455,33 @@ th {
   font-style: normal;
   font-weight: normal; }
 
+@font-face {
+  font-family: "calligraffitti-regular-webfont";
+  src: url("/fonts/calligraffitti-regular-webfont.eot");
+  /* IE9 */
+  src: url("/fonts/calligraffitti-regular-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/calligraffitti-regular-webfont.woff") format("woff"), url("/fonts/calligraffitti-regular-webfont.ttf") format("truetype"), url("/fonts/calligraffitti-regular-webfont.svg#calligraffitti-regular-webfont") format("svg");
+  /* iOS 4.1- */
+  font-style: normal;
+  font-weight: normal; }
+
+@font-face {
+  font-family: "SentyZHAO";
+  src: url("/fonts/SentyZHAO.eot");
+  /* IE9 */
+  src: url("/fonts/SentyZHAO.eot?#iefix") format("embedded-opentype"), url("/fonts/SentyZHAO.woff") format("woff"), url("/fonts/SentyZHAO.ttf") format("truetype"), url("/fonts/SentyZHAO.svg#SentyZHAO") format("svg");
+  /* iOS 4.1- */
+  font-style: normal;
+  font-weight: normal; }
+
+@font-face {
+  font-family: "SentyPea";
+  src: url("/fonts/SentyPea.eot");
+  /* IE9 */
+  src: url("/fonts/SentyPea.eot?#iefix") format("embedded-opentype"), url("/fonts/SentyPea.woff") format("woff"), url("/fonts/SentyPea.ttf") format("truetype"), url("/fonts/SentyPea.svg#SentyPea") format("svg");
+  /* iOS 4.1- */
+  font-style: normal;
+  font-weight: normal; }
+
 .clearfix:after {
   content: "\200B";
   display: block;
@@ -479,7 +508,7 @@ th {
 html,
 body {
   height: 100%;
-  background: #f7f7f7;
+  background: #fff;
   font-family: Verdana, "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif; }
 
 code,
@@ -511,5 +540,15 @@ a.btn-download {
 
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important; }
+
+.title {
+  margin-top: 40px;
+  margin-bottom: 0px;
+  line-height: 1em;
+  font-family: "calligraffitti-regular-webfont"; }
+
+.slogan {
+  font-family: "SentyPea";
+  font-size: 18px; }
 
 /*# sourceMappingURL=app.css.map */

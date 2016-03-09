@@ -33927,7 +33927,7 @@ exports.default = _angular2.default.module('controllers', [])
 
   vm.status = 'INIT'; // 'INIT' | 'UPLOADING' | 'SUCCESS' | 'ERROR'
 
-  vm.text = '道可道，非常道。\n名可名，非常名。';
+  vm.text = '从明天起，\n    做一个幸福的人,\n    喂马、劈柴，周游世界。\n    从明天起，\n    关心粮食和蔬菜。\n    我有一所房子，\n    面朝大海，春暖花开。\n  ';
 
   vm.style = {};
   vm.resultStyle = { display: 'none' };

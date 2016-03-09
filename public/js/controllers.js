@@ -1,5 +1,7 @@
 'use strict';
 
+import angular from 'angular';
+
 // @ngInject
 export default angular.module('controllers', [])
 

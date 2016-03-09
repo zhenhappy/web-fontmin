@@ -1,3 +1,4 @@
+@import './_normalize.scss';
 @import './components/_index.scss';
 @import './_font.scss';
 
@@ -70,4 +71,8 @@ a.btn-download {
 
 .result-box {
   //display: none;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
 }

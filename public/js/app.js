@@ -1,5 +1,6 @@
 'use strict';
 
+import angular from 'angular';
 import ngFileUpload from 'ng-file-upload';
 import components from './components';
 import controllers from './controllers';

@@ -12,78 +12,14 @@ var EasyZip = require('easy-zip').EasyZip;
 
 router.post('/', function (req, res, next) {
   var originalname = req.files[0].originalname;
-  var fontFamily = originalname.replace(/\.ttf/, '');
   var output = path.join(process.cwd(), 'public', 'uploads', originalname);
-  var id = uuid.v1();
-
-  var dest = path.join(process.cwd(), 'public', 'fontmin', id);
-
   var rs = intoStream(req.files[0].buffer);
   var ws = fs.createWriteStream(output);
+
   rs.pipe(ws);
+
   rs.on('end', function () {
-    console.log('end');
-
-    console.log(req.body);
-    var fontPath = '/fontmin/' + id + '/';
-    var cssPath = path.join(process.cwd(), 'public', 'fontmin', id, originalname.replace(/\.ttf/, '.css'));
-    console.log(cssPath);
-
-    // 初始化
-    var fontmin = new Fontmin()
-      .src(output)
-      .use(rename(originalname))
-      .use(Fontmin.glyph({ // 字型提取插件
-        text: req.body.text // 所需文字
-      }))
-      .use(Fontmin.ttf2eot()) // eot 转换插件
-      .use(Fontmin.ttf2woff()) // woff 转换插件
-      .use(Fontmin.ttf2svg()) // svg 转换插件
-      .use(Fontmin.css({ fontPath: fontPath, asFileName: true })) // css 生成插件
-      .dest(dest);
-
-    // 执行
-    fontmin.run(function (err, files, stream) {
-      if (err) { // 异常捕捉
-        console.error(err);
-      }
-
-      console.log(cssPath);
-
-      fs.readFile(cssPath, 'utf-8', function (err, data) {
-        console.log(data); // 成功
-
-        var str = data;
-        var reg = /url\("\/fontmin\/([^/]+)\//g;
-
-        str = str.replace(reg, 'url("/fonts/');
-        console.log(str);
-
-        fs.writeFile(cssPath, str, function (err) {
-          if (err) {
-            return console.log(err);
-          }
-
-          var zip = new EasyZip();
-          var outputName = path.join(process.cwd(), 'public', 'fontmin', id + '.zip');
-
-          zip.zipFolder(dest, function () {
-            zip.writeToFile(outputName);
-
-            res.json({
-              style: data,
-              fontFamily: fontFamily,
-              zipUrl: '/fontmin/' + id + '.zip'
-            });
-
-          });
-
-        });
-
-      });
-
-    });
-
+    handleFont(req, res);
   });
 
   rs.on('error', function (err) {
@@ -94,3 +30,108 @@ router.post('/', function (req, res, next) {
 });
 
 module.exports = router;
+
+// ///////////////////////////////////////////////////////////////
+// private method
+// ///////////////////////////////////////////////////////////////
+function handleFont(req, res) {
+  var styleData;
+  var originalname = req.files[0].originalname;
+  var output = path.join(process.cwd(), 'public', 'uploads', originalname);
+  var fontFamily = originalname.replace(/\.ttf/, '');
+  var id = uuid.v1();
+  var dest = path.join(process.cwd(), 'public', 'fontmin', id);
+  var fontPath = '/fontmin/' + id + '/';
+  var cssPath = path.join(process.cwd(), 'public', 'fontmin', id, originalname.replace(/\.ttf/, '.css'));
+  var reg = /url\("\/fontmin\/([^/]+)\//g;
+  var outputName = path.join(process.cwd(), 'public', 'fontmin', id + '.zip');
+
+  // 初始化
+  var fontmin = new Fontmin()
+    .src(output)
+    .use(rename(originalname))
+    .use(Fontmin.glyph({ // 字型提取插件
+      text: req.body.text // 所需文字
+    }))
+    .use(Fontmin.ttf2eot()) // eot 转换插件
+    .use(Fontmin.ttf2woff()) // woff 转换插件
+    .use(Fontmin.ttf2svg()) // svg 转换插件
+    .use(Fontmin.css({ fontPath: fontPath, asFileName: true })) // css 生成插件
+    .dest(dest);
+
+  runFontmin(fontmin)
+    .then(function () {
+      return readFile(cssPath);
+    })
+    .then(function (data) {
+      styleData = data;
+
+      data = data.replace(reg, 'url("/fonts/');
+      return writeFile(cssPath, data);
+    })
+    .then(function () {
+      return zipFonts(dest, outputName);
+    })
+    .then(function () {
+      res.json({
+        style: styleData,
+        fontFamily: fontFamily,
+        zipUrl: '/fontmin/' + id + '.zip'
+      });
+
+    })
+    .catch(function (err) {
+      throw new Error(err);
+    });
+
+}
+
+function runFontmin(fontmin) {
+  return new Promise(function (resolve, reject) {
+    fontmin.run(function (err) {
+      if (err) {
+        return reject(err);
+      }
+
+      resolve();
+    });
+  });
+}
+
+function readFile(path) {
+  return new Promise(function (resolve, reject) {
+    fs.readFile(path, 'utf-8', function (err, data) {
+      if (err) {
+        return reject(err);
+      }
+
+      resolve(data);
+    });
+  });
+}
+
+function writeFile(path, data) {
+  return new Promise(function (resolve, reject) {
+    fs.writeFile(path, data, function (err) {
+      if (err) {
+        return reject(err);
+      }
+
+      resolve();
+    });
+  });
+}
+
+function zipFonts(input, output) {
+  var zip = new EasyZip();
+  return new Promise(function (resolve, reject) {
+    zip.zipFolder(input, function (err) {
+      if (err) {
+        return reject(err);
+      }
+
+      zip.writeToFile(output);
+      resolve();
+    });
+  });
+}

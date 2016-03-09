@@ -33892,145 +33892,19 @@ var _ngFileUpload = require('ng-file-upload');
 
 var _ngFileUpload2 = _interopRequireDefault(_ngFileUpload);
 
-var _components = require('./components');
-
-var _components2 = _interopRequireDefault(_components);
-
 var _controllers = require('./controllers');
 
 var _controllers2 = _interopRequireDefault(_controllers);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_angular2.default.module('webFontmin', [_ngFileUpload2.default, _components2.default.name, _controllers2.default.name]);
+_angular2.default.module('webFontmin', [_ngFileUpload2.default, _controllers2.default.name]);
 
-setTimeout(function () {
-  _angular2.default.element(document).ready(function () {
-    _angular2.default.bootstrap(document, ['webFontmin']);
-  });
-}, 1100);
-
-},{"./components":6,"./controllers":9,"angular":2,"ng-file-upload":4}],6:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
+_angular2.default.element(document).ready(function () {
+  _angular2.default.bootstrap(document, ['webFontmin']);
 });
 
-var _angular = require('angular');
-
-var _angular2 = _interopRequireDefault(_angular);
-
-var _showcase = require('./showcase');
-
-var _showcase2 = _interopRequireDefault(_showcase);
-
-var _uploadBox = require('./upload-box');
-
-var _uploadBox2 = _interopRequireDefault(_uploadBox);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _angular2.default.module('app.components', []);
-
-// .directive('showcase', showcase)
-// .directive('uploadBox', uploadBox);
-
-},{"./showcase":7,"./upload-box":8,"angular":2}],7:[function(require,module,exports){
-'use strict';
-
-// @ngInject
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-exports.default = function ($location) {
-  controller.$inject = ["$scope"];
-  var _ref;
-
-  return (_ref = {
-    restrict: 'E',
-    replace: true,
-    template: getTpl(),
-    scope: true
-  }, _defineProperty(_ref, 'scope', {}), _defineProperty(_ref, 'controller', controller), _defineProperty(_ref, 'controllerAs', 'vm'), _defineProperty(_ref, 'bindToController', {}), _ref);
-
-  // /////////////
-
-  // @ngInject
-  function controller($scope) {
-    var vm = this;
-    vm.text = '道可道，非常道';
-  }
-
-  function getTpl() {
-    var tpl = '\n      <div class="box clearfix">\n        <div class="box-edit pull-left">\n          <textarea placeholder="道可道，非常道" autofocus="autofocus" ng-model="vm.text"></textarea>\n        </div>\n        <div class="box-preview pull-left">{{vm.text}}</div>\n      </div>\n    ';
-    return tpl;
-  }
-};
-
-},{}],8:[function(require,module,exports){
-'use strict';
-
-// @ngInject
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-exports.default = function ($location) {
-  controller.$inject = ["$scope", "Upload", "$http"];
-  var _ref;
-
-  return (_ref = {
-    restrict: 'E',
-    replace: true,
-    template: getTpl(),
-    scope: true
-  }, _defineProperty(_ref, 'scope', {}), _defineProperty(_ref, 'controller', controller), _defineProperty(_ref, 'controllerAs', 'vm'), _defineProperty(_ref, 'bindToController', {}), _ref);
-
-  // /////////////
-
-  // @ngInject
-  function controller($scope, Upload, $http) {
-    var vm = this;
-
-    vm.uploadFiles = function ($files) {
-      if (!$files || $files.length < 1) {
-        return;
-      }
-
-      Upload.upload({
-        url: 'upload-font',
-        data: {
-          file: $files[0],
-          name: 'forsigner'
-        }
-      }).then(function (resp) {
-        console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-      }, function (resp) {
-
-        console.log('Error status: ' + resp.status);
-      }, function (evt) {
-
-        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total, 10);
-        console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-      });
-    };
-  }
-
-  function getTpl() {
-    var tpl = '\n      <div class="upload-box">\n        <div\n          ngf-select="vm.uploadFiles($files)"\n          ngf-drop="vm.uploadFiles($files)"\n          class="drop-box"\n          ngf-drag-over-class="\'dragover\'"\n          ngf-multiple="true" >\n          +\n        </div>\n\n        <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>\n      </div>\n    ';
-    return tpl;
-  }
-};
-
-},{}],9:[function(require,module,exports){
+},{"./controllers":6,"angular":2,"ng-file-upload":4}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

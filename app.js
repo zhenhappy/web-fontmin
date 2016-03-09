@@ -4,8 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var multer  = require('multer');
+var argv = require('minimist')(process.argv.slice(2));
+process.env.NODE_ENV = argv.e || 'development';
 
 // var uploadPath = path.join(__dirname, 'public', 'uploads');
 // var upload = multer({ dest: uploadPath });
@@ -32,7 +33,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 if (app.get('env') === 'development') {
-  console.log('8898989898');
   app.use(require('connect-livereload')({ port: 35728 }));
 }
 

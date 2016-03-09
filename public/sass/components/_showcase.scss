@@ -9,13 +9,14 @@
   background: #fff;
   border: 1px solid #dfdfdf;
   border-top: 1px solid #f0f0f0;
-  box-shadow: 0 10px 60px 0 rgba(0, 0, 0, .1);
+  //box-shadow: 0 10px 60px 0 rgba(0, 0, 0, .1);
   margin-top: 50px;
   .box-edit,
   .box-preview {
     font-size: 20px;
     width: 50%;
     height: 100%;
+    line-height: 1.4em;
   }
   .box-edit {
     textarea {
@@ -32,7 +33,9 @@
   }
   .box-preview {
     padding: 10px;
-    font-family: 'web-fontmin';
+    pre {
+      font-family: 'SentyZHAO';
+    }
   }
 
 }

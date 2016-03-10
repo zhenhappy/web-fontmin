@@ -16,6 +16,7 @@ var ngAnnotate = require('gulp-ng-annotate');
 var source = require('vinyl-source-stream');
 var browserify = require('browserify');
 var streamify = require('gulp-streamify');
+var uglify = require('gulp-uglify');
 
 process.env.NODE_ENV = 'development';
 process.env.PORT = 12306;
@@ -42,6 +43,7 @@ gulp.task('bundle', function () {
     .pipe(source('main.js'))
     .pipe(ngAnnotate({ add: true }))
     .pipe(rename('bundle.js'))
+    .pipe(streamify(uglify()))
     .pipe(gulp.dest('./public/js'))
     .pipe(livereload());
 });

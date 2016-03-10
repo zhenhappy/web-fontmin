@@ -2,15 +2,14 @@
 
 import angular from 'angular';
 
-// @ngInject
 export default angular.module('controllers', [])
 
   // @ngInject
-  .controller('AppController', function ($scope, Upload, $http, $timeout, $interval) {
+  .controller('AppController', ['Upload', '$timeout', function (Upload, $timeout) {
     var vm = this;
 
     vm.status = 'INIT'; // 'INIT' | 'UPLOADING' | 'SUCCESS' | 'ERROR'
-    vm.text = `从明天起，
+    vm.text =`从明天起，
       做一个幸福的人,
       喂马、劈柴，周游世界。
       从明天起，
@@ -73,4 +72,4 @@ export default angular.module('controllers', [])
       });
 
     };
-  });
+  }]);

@@ -10,14 +10,15 @@ export default angular.module('controllers', [])
 
     vm.status = 'INIT'; // 'INIT' | 'UPLOADING' | 'SUCCESS' | 'ERROR'
     vm.text =`从明天起，
-      做一个幸福的人,
-      喂马、劈柴，周游世界。
-      从明天起，
-      关心粮食和蔬菜。
-      我有一所房子，
+    做一个幸福的人,
+    喂马、劈柴，周游世界。
+    从明天起，
+    关心粮食和蔬菜。
+    我有一所房子，
+    面朝大海，
     `;
 
-    var str = '面朝大海，春暖花开。';
+    var str = `春暖花开。`;
     var originArr = str.split('');
     var arr = [];
     originArr.forEach(elem => {
@@ -29,6 +30,7 @@ export default angular.module('controllers', [])
     vm.toPageTwo = function () {
       $location.hash('page-2');
       $anchorScroll();
+      document.getElementById('edit').focus();
 
       for (let i = 0; i < arr.length; i++) {
         $timeout(function () {

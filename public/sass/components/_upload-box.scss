@@ -6,16 +6,16 @@
     overflow: hidden;
     width: 100%;
     height: 100%;
-    border: 2px dashed #ddd;
-    background: #fff;
+    border: 2px dashed darken(#e4caa3, 10%);
+    background: darken(#e4caa3, 5%);
     border-radius: 6px;
     font-size: 40px;
     text-align: center;
     line-height: 92px;
-    color: #ccc;
+    color:  darken(#e4caa3, 30%);
     &.dragover {
-      background: #fcfcfc;
-      border: 2px dashed #bbb;
+      background: darken(#e4caa3, 10%);
+      border: 2px dashed darken(#e4caa3, 15%);
     }
     &:hover {
       cursor: pointer;

@@ -385,7 +385,6 @@ th {
   margin: 50px auto;
   padding: 0;
   border-radius: 6px;
-  background: #fff;
   margin-top: 50px; }
   .box .box-edit,
   .box .box-preview {
@@ -401,6 +400,7 @@ th {
     height: 100%;
     padding: 10px;
     border: 0;
+    background: transparent;
     line-height: 1.8em; }
     .box .box-edit textarea:focus {
       outline: none; }
@@ -410,6 +410,37 @@ th {
     padding: 10px;
     font-family: "SentyZHAO";
     line-height: 1.8em; }
+
+.article {
+  position: relative;
+  text-align: center;
+  height: 430px;
+  width: 800px;
+  margin: auto;
+  margin-top: -50px;
+  margin-bottom: 30px; }
+  .article pre {
+    text-align: center;
+    height: 100%;
+    padding: 10px;
+    font-family: "SentyZHAO";
+    line-height: 1.8em;
+    writing-mode: vertical-rl;
+    margin: 0 auto;
+    font-size: 30px;
+    overflow: hidden; }
+  .article .author {
+    font-family: "SentyZHAO";
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: transparent url("/img/bg.jpg") left top no-repeat;
+    background-size: 80px 80px;
+    color: #fff;
+    line-height: 80px;
+    bottom: 20px;
+    font-size: 22px;
+    right: -20px; }
 
 .spinner {
   text-align: center;
@@ -508,7 +539,8 @@ th {
 html,
 body {
   background: #fff;
-  font-family: Verdana, "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif; }
+  font-family: Verdana, "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
+  min-height: 100%; }
 
 code,
 pre,
@@ -529,7 +561,7 @@ a.btn-download {
   height: 40px;
   width: 196px;
   line-height: 40px;
-  border-radius: 18px;
+  border-radius: 20px;
   background: #fff;
   text-decoration: none; }
   a.btn-download:hover {
@@ -537,13 +569,16 @@ a.btn-download {
     border: 1px solid #ddd;
     cursor: pointer; }
 
-[ng\:cloak], [ng-cloak], .ng-cloak {
+[ng\:cloak],
+[ng-cloak],
+.ng-cloak {
   display: none !important; }
 
 .title {
-  margin-top: 40px;
-  margin-bottom: 0px;
-  line-height: 1em;
+  line-height: 1.4em;
+  font-size: 40px;
+  margin-top: 0;
+  margin-bottom: 0;
   font-family: "calligraffitti-regular-webfont"; }
 
 .slogan {
@@ -589,5 +624,36 @@ a.usage-box {
       border-bottom-color: #f0f0f0; }
     a.usage-box .usage-list li {
       text-align: left; }
+
+.page {
+  background: #fff;
+  position: relative; }
+  .page.page-1 {
+    background: #fff; }
+  .page.page-2 {
+    background: #e4caa3; }
+  .page .wrap {
+    overflow: hidden;
+    width: 100%;
+    height: 570px;
+    position: absolute;
+    top: 50%;
+    margin-top: -300px; }
+  .page .btn-use {
+    display: inline-block;
+    border: 1px solid #000;
+    height: 40px;
+    width: 196px;
+    line-height: 36px;
+    border-radius: 20px;
+    background: #fff;
+    text-decoration: none;
+    font-family: "SentyPea";
+    font-size: 24px; }
+    .page .btn-use:hover {
+      background: #020202;
+      border: 1px solid #020202;
+      cursor: pointer;
+      color: #ddd; }
 
 /*# sourceMappingURL=app.css.map */

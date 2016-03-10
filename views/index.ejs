@@ -28,57 +28,95 @@
   </head>
 
   <body ng-controller="AppController as vm">
-
-    <div class="text-center">
-      <h1 class="title">Web Fontmin</h1>
-      <div class="slogan">
-        字体子集化，在线提取你需要的字体
-      </div>
-      <div class="nav">
-        <a class="usage-box" href="#">
-          <span class="entry">用法</span>
-          <ul class="usage-list">
-            <li>1. 编辑下方左边输入框，输入你想提取的</li>
-            <li>2. 上传 ttf 格式的字体</li>
-            <li>3. 下载字体和样式</li>
-            <li>PS: 如果你想提取全部字体，清空输入框再上传即可</li>
-          </ul>
-        </a>
-        <a href="https://github.com/forsigner/web-fontmin" target="_blank">源码</a>
-        <a href="http://forsigner.com/" target="_blank">案例</a>
-      </div>
-    </div>
-
-    <div class="box clearfix">
-      <div class="box-edit pull-left">
-        <textarea placeholder="" autofocus="autofocus" ng-model="vm.text"></textarea>
-      </div>
-      <div class="box-preview pull-right">
-        <pre id="preview" ng-bind="vm.text"></pre>
-      </div>
-    </div>
-
-    <div class="upload-box">
-      <div ngf-select="vm.uploadFiles($files)" ngf-drop="vm.uploadFiles($files)" accept=".ttf" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true">
-
-        <div ng-show="vm.status==='INIT'" class="icon-add">+</div>
-
-        <div ng-show="vm.status==='UPLOADING'" class="spinner">
-          <div class="bounce1"></div>
-          <div class="bounce2"></div>
-          <div class="bounce3"></div>
+    <div class="page page-1">
+      <div class="wrap">
+        <div class="text-center">
+          <h1 class="title">Web Fontmin</h1>
+          <div class="slogan">
+            字体子集化，在线提取你需要的字体
+          </div>
+          <div class="nav">
+            <a class="usage-box" href="#">
+              <span class="entry">用法</span>
+              <ul class="usage-list">
+                <li>1. 编辑下方左边输入框，输入你想提取的</li>
+                <li>2. 上传 ttf 格式的字体</li>
+                <li>3. 下载字体和样式</li>
+                <li>PS: 如果你想提取全部字体，清空输入框再上传即可</li>
+              </ul>
+            </a>
+            <a href="https://github.com/forsigner/web-fontmin" target="_blank">源码</a>
+            <a href="http://forsigner.com/" target="_blank">案例</a>
+          </div>
         </div>
 
-        <div ng-cloak ng-show="vm.status==='SUCCESS'" class="tip-success">上传成功</div>
+        <div class="article">
+          <pre>
+          从明天起，
+          做一个幸福的人，
+          喂马、劈柴、周游世界。
+          从明天起，
+          关心粮食和蔬菜。
+          我有一所房子，
+          面朝大海，春暖花开。
 
+          从明天起，
+          和每一个亲人通信，
+          告诉他们我的幸福。
+          那幸福的闪电告诉我的，
+          我将告诉每一个人。
+          </pre>
+          <div class="author">海子</div>
+        </div>
+        <div class="text-center">
+          <a class="btn-use" ng-click="vm.toPageTwo()">开始使用</a>
+        </div>
       </div>
     </div>
+    <div id="page-2" class="page page-2">
+      <div class="box clearfix">
+        <div class="box-edit pull-left">
+          <textarea placeholder="" ng-model="vm.text"></textarea>
+        </div>
+        <div class="box-preview pull-right">
+          <pre id="preview" ng-bind="vm.text"></pre>
+        </div>
+      </div>
 
-    <div ng-cloak ng-show="vm.status==='SUCCESS'" class="text-center result-box">
-      <a class="btn-download" ng-href="{{vm.downloadUrl}}" download target="_blank">下载字体</a>
+      <div class="upload-box">
+        <div ngf-select="vm.uploadFiles($files)" ngf-drop="vm.uploadFiles($files)" accept=".ttf" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true">
+
+          <div ng-show="vm.status==='INIT'" class="icon-add">+</div>
+
+          <div ng-show="vm.status==='UPLOADING'" class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+          </div>
+
+          <div ng-cloak ng-show="vm.status==='SUCCESS'" class="tip-success">上传成功</div>
+
+        </div>
+      </div>
+
+      <div ng-cloak ng-show="vm.status==='SUCCESS'" class="text-center result-box">
+        <a class="btn-download" ng-href="{{vm.downloadUrl}}" download target="_blank">下载字体</a>
+      </div>
     </div>
 
     <script src="/js/bundle.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      (function() {
+        var resize = function() {
+          var winHeight = document.documentElement.clientHeight;
+          var $pages = document.querySelectorAll('.page');
+          $pages[0].style.height = winHeight + 'px';
+          $pages[1].style.height = winHeight + 'px';
+        };
+        resize();
+        window.onresize = resize;
+      })();
+    </script>
   </body>
 
 </html>

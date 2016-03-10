@@ -44,8 +44,9 @@ gulp.task('bundle', function () {
     .pipe(ngAnnotate({ add: true }))
     .pipe(rename('bundle.js'))
     .pipe(streamify(uglify()))
-    .pipe(gulp.dest('./public/js'))
-    .pipe(livereload());
+    .pipe(gulp.dest('./public/js'));
+
+  // .pipe(livereload());
 });
 
 gulp.task('watch', function () {

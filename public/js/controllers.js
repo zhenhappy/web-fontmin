@@ -5,7 +5,7 @@ import angular from 'angular';
 export default angular.module('controllers', [])
 
   // @ngInject
-  .controller('AppController', ['Upload', '$timeout', function (Upload, $timeout) {
+  .controller('AppController', ['Upload', '$timeout', '$anchorScroll', '$location', function (Upload, $timeout, $anchorScroll, $location) {
     var vm = this;
 
     vm.status = 'INIT'; // 'INIT' | 'UPLOADING' | 'SUCCESS' | 'ERROR'
@@ -26,14 +26,16 @@ export default angular.module('controllers', [])
       }
     });
 
-    for (let i = 0; i < arr.length; i++) {
-      $timeout(function () {
-        vm.text += arr[i];
-      }, 300 * i);
-    }
+    vm.toPageTwo = function () {
+      $location.hash('page-2');
+      $anchorScroll();
 
-    vm.style = {};
-    vm.resultStyle = { display: 'none' };
+      for (let i = 0; i < arr.length; i++) {
+        $timeout(function () {
+          vm.text += arr[i];
+        }, 300 * i);
+      }
+    };
 
     vm.uploadFiles = $files => {
       if (!$files || $files.length < 1) {

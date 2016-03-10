@@ -6,7 +6,7 @@
   margin: 50px auto;
   padding: 0;
   border-radius: 6px;
-  background: #fff;
+  //background: #fff;
   // border: 1px solid #dfdfdf;
   // border-top: 1px solid #f0f0f0;
   //box-shadow: 0 10px 60px 0 rgba(0, 0, 0, .1);
@@ -28,6 +28,7 @@
       height: 100%;
       padding: 10px;
       border: 0;
+      background: transparent;
       // border-right: 1px solid #ddd;
       line-height: 1.8em;
       &:focus {
@@ -45,5 +46,37 @@
       line-height: 1.8em;
     }
   }
-
+}
+.article {
+  position: relative;
+  text-align: center;
+  height: 430px;
+  width: 800px;
+  margin: auto;
+  margin-top: -50px;
+  margin-bottom: 30px;
+  pre {
+    text-align: center;
+    height: 100%;
+    padding: 10px;
+    font-family: "SentyZHAO";
+    line-height: 1.8em;
+    writing-mode: vertical-rl;
+    margin: 0 auto;
+    font-size: 30px;
+    overflow: hidden;
+  }
+  .author {
+    font-family: "SentyZHAO";
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: transparent url('/img/bg.jpg') left top no-repeat;
+    background-size: 80px 80px;
+    color: #fff;
+    line-height: 80px;
+    bottom: 20px;
+    font-size: 22px;
+    right: -20px;
+  }
 }

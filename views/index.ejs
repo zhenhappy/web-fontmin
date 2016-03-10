@@ -34,7 +34,19 @@
       <div class="slogan">
         字体子集化，在线提取你需要的字体
       </div>
-      <a class="hint hint--bottom" href="###">使用方法</a>
+      <div class="nav">
+        <a class="usage-box" href="#">
+          <span class="entry">用法</span>
+          <ul class="usage-list">
+            <li>1. 编辑下方左边输入框，输入你想提取的</li>
+            <li>2. 上传 ttf 格式的字体</li>
+            <li>3. 下载字体和样式</li>
+            <li>PS: 如果你想提取全部字体，清空输入框再上传即可</li>
+          </ul>
+        </a>
+        <a href="https://github.com/forsigner/web-fontmin" target="_blank">源码</a>
+        <a href="http://forsigner.com/" target="_blank">案例</a>
+      </div>
     </div>
 
     <div class="box clearfix">
@@ -47,13 +59,7 @@
     </div>
 
     <div class="upload-box">
-      <div
-        ngf-select="vm.uploadFiles($files)"
-        ngf-drop="vm.uploadFiles($files)"
-        accept=".ttf"
-        class="drop-box"
-        ngf-drag-over-class="'dragover'"
-        ngf-multiple="true" >
+      <div ngf-select="vm.uploadFiles($files)" ngf-drop="vm.uploadFiles($files)" accept=".ttf" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true">
 
         <div ng-show="vm.status==='INIT'" class="icon-add">+</div>
 

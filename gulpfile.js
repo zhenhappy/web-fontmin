@@ -54,13 +54,6 @@ gulp.task('watch', function () {
   gulp.watch('./public/js/**/*.js', ['bundle']);
 });
 
-// gulp.task('font', function () {
-//   return gulp.src('src/fonts/*.ttf')
-//     .pipe(fontmin({ text: '他夏了夏天' }))
-//     .pipe(gulp.dest('dist/fonts'));
-//
-// });
-
 gulp.task('copy', function () {
   gulp.src('./public/bower_components/**/fonts/*').pipe(flatten()).pipe(gulp.dest('./public/fonts'));
 });

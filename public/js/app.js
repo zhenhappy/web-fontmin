@@ -8,4 +8,8 @@ angular.module('webFontmin', [ngFileUpload, controllers.name]);
 
 angular.element(document).ready(function () {
   angular.bootstrap(document, ['webFontmin']);
+  window.onload = function() {
+    console.log(121);
+    angular.element(document.getElementById('loading')).css('display', 'none');
+  }
 });

@@ -11,7 +11,6 @@
     <title>web-fontmin</title>
 
     <!-- build:css css/bundle.css -->
-    <link rel='stylesheet' href='bower_components/normalize-css/normalize.css'/>
     <link rel='stylesheet' href='/css/app.css'/>
     <!-- endbuild -->
 
@@ -28,6 +27,14 @@
   </head>
 
   <body ng-controller="AppController as vm">
+    <div class="loading" id="loading">
+      <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+    </div>
+
     <div class="page page-1">
       <div class="wrap">
         <div class="text-center header">
@@ -83,8 +90,8 @@
           <div class="box-edit pull-left">
             <textarea id="edit" placeholder="输入框为空，将提取全部字体" ng-model="vm.text"></textarea>
           </div>
-          <div class="box-preview pull-right">
-            <pre id="preview" ng-bind="vm.text"></pre>
+          <div class="box-edit pull-right">
+            <textarea id="preview" class="preview" placeholder="" ng-model="vm.text"></textarea>
           </div>
         </div>
 

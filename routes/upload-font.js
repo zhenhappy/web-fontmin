@@ -36,6 +36,7 @@ module.exports = router;
 // ///////////////////////////////////////////////////////////////
 function handleFont(req, res) {
   var styleData;
+  var fontmin;
   var originalname = req.files[0].originalname;
   var output = path.join(process.cwd(), 'public', 'uploads', originalname);
   var fontFamily = originalname.replace(/\.ttf/, '');
@@ -46,18 +47,28 @@ function handleFont(req, res) {
   var reg = /url\("\/fontmin\/([^/]+)\//g;
   var outputName = path.join(process.cwd(), 'public', 'fontmin', id + '.zip');
 
-  // 初始化
-  var fontmin = new Fontmin()
-    .src(output)
-    .use(rename(originalname))
-    .use(Fontmin.glyph({ // 字型提取插件
-      text: req.body.text // 所需文字
-    }))
-    .use(Fontmin.ttf2eot()) // eot 转换插件
-    .use(Fontmin.ttf2woff()) // woff 转换插件
-    .use(Fontmin.ttf2svg()) // svg 转换插件
-    .use(Fontmin.css({ fontPath: fontPath, asFileName: true })) // css 生成插件
-    .dest(dest);
+  if (req.body.text.length > 0) {
+    fontmin = new Fontmin()
+      .src(output)
+      .use(rename(originalname))
+      .use(Fontmin.glyph({ // 字型提取插件
+        text: req.body.text // 所需文字
+      }))
+      .use(Fontmin.ttf2eot()) // eot 转换插件
+      .use(Fontmin.ttf2woff()) // woff 转换插件
+      .use(Fontmin.ttf2svg()) // svg 转换插件
+      .use(Fontmin.css({ fontPath: fontPath, asFileName: true })) // css 生成插件
+      .dest(dest);
+  } else {
+    fontmin = new Fontmin()
+      .src(output)
+      .use(rename(originalname))
+      .use(Fontmin.ttf2eot()) // eot 转换插件
+      .use(Fontmin.ttf2woff()) // woff 转换插件
+      .use(Fontmin.ttf2svg()) // svg 转换插件
+      .use(Fontmin.css({ fontPath: fontPath, asFileName: true })) // css 生成插件
+      .dest(dest);
+  }
 
   runFontmin(fontmin)
     .then(function () {

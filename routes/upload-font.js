@@ -63,6 +63,7 @@ function handleFont(req, res) {
     fontmin = new Fontmin()
       .src(output)
       .use(rename(originalname))
+      .use(Fontmin.glyph())
       .use(Fontmin.ttf2eot()) // eot 转换插件
       .use(Fontmin.ttf2woff()) // woff 转换插件
       .use(Fontmin.ttf2svg()) // svg 转换插件

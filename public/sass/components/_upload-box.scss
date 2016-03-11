@@ -1,4 +1,5 @@
 .upload-box {
+  position: relative;
   width: 200px;
   height: 100px;
   margin: 40px auto;
@@ -25,4 +26,12 @@
 
 .tip-success {
   font-size: 16px;
+  margin-top: 4px;
+}
+
+.progress-percentage {
+  position: absolute;
+  top: 8px;
+  right: 20px;
+  font-size: 14px;
 }

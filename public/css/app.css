@@ -354,6 +354,7 @@ th {
   padding: 0; }
 
 .upload-box {
+  position: relative;
   width: 200px;
   height: 100px;
   margin: 40px auto; }
@@ -375,7 +376,14 @@ th {
       cursor: pointer; }
 
 .tip-success {
-  font-size: 16px; }
+  font-size: 16px;
+  margin-top: 4px; }
+
+.progress-percentage {
+  position: absolute;
+  top: 8px;
+  right: 20px;
+  font-size: 14px; }
 
 .box {
   overflow: hidden;
@@ -442,12 +450,12 @@ th {
 
 .spinner {
   text-align: center;
-  line-height: 90px; }
+  line-height: 85px; }
 
 .spinner > div {
   width: 12px;
   height: 12px;
-  background-color: #666;
+  background: #91682a;
   border-radius: 100%;
   display: inline-block;
   -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;

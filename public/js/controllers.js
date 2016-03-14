@@ -70,8 +70,11 @@ export default angular.module('controllers', [])
         vm.status = 'ERROR';
       }, function (evt) {
 
-        vm.status = 'UPLOADING';
         var progressPercentage = parseInt(100.0 * evt.loaded / evt.total, 10);
+        if (progressPercentage == 100) {
+          vm.status = 'UPLOADED';
+        }
+
         vm.progressPercentage = progressPercentage + '%';
         console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
       });

@@ -1,0 +1,193 @@
+.box {
+  overflow: hidden;
+  width: 800px;
+  height: 100%;
+  height: 600px;
+  margin: 0 auto 50px;
+  padding: 0;
+  border: 1px solid #dfdfdf;
+  border: none;
+  box-shadow: 0 10px 60px 0 rgba(0, 0, 0, .1);
+  .box-header {
+    position: relative;
+    border-bottom: 1px solid #f0f0f0;
+    height: 50px;
+    h2 {
+      line-height: 50px;
+      font-size: 22px;
+    }
+    a.usage-box {
+      text-decoration: none;
+      position: absolute;
+      color: #fff;
+      display: inline-block;
+      color: darken(#e4caa3, 5%);
+      right: 8px;
+      top: 9px;
+      .entry {
+        font-size: 26px;
+        &:hover {
+          color: darken(#e4caa3, 10%);
+        }
+      }
+      &:hover {
+        cursor: pointer;
+        .usage-list {
+          display: inline-block;
+        }
+      }
+      .usage-list {
+        &:before {
+          content: '';
+          display: inline-block;
+          width: 0;
+          height: 0;
+          border-width: 6px;
+          border: 6px solid transparent;
+          position: absolute;
+          top: -12px;
+          right: 12px;
+          border-bottom-color: darken(#e4caa3, 5%);
+        }
+        position: absolute;
+        display: none;
+        width: 350px;
+        line-height: 1.8em;
+        background: darken(#e4caa3, 5%);
+        border-radius: 6px;
+        padding: 15px;
+        color: darken(#e4caa3, 40%);
+        font-size: 13px;
+        top: 35px;
+        right: 0;
+        &:hover {
+          cursor: text;
+        }
+        li {
+          text-align: left;
+        }
+      }
+    }
+  }
+  .box-body {
+    height: 450px;
+    border-bottom: 1px solid #f0f0f0;
+    .box-edit {
+      font-size: 24px;
+      width: 50%;
+      height: 100%;
+      line-height: 1.4em;
+      text-align: center;
+      padding-top: 30px;
+      &.preview {
+        border-left: 1px solid #f0f0f0;
+      }
+      textarea {
+        text-align: center;
+        font-size: 24px;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        border: 0;
+        background: transparent;
+        //border-right: 2px solid darken(#e4caa3, 10%);
+        border: none;
+        line-height: 1.8em;
+        &:focus {
+          outline: none;
+        }
+        &.preview {
+          font-family: "SentyZHAO";
+        }
+      }
+    }
+  }
+  .box-footer {
+    height: 100px;
+    .upload-box {
+      position: relative;
+      width: 50%;
+      height: 100%;
+      border-right: 1px solid #f0f0f0;
+      .drop-box {
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        font-size: 40px;
+        text-align: center;
+        line-height: 92px;
+        color: #000;
+        &.dragover {
+          background: #f5f5f5;
+        }
+        &:hover {
+          cursor: pointer;
+          background: #f5f5f5;
+        }
+      }
+    }
+    .tip-success {
+      font-size: 16px;
+      margin-top: 4px;
+    }
+    .progress-percentage {
+      position: absolute;
+      font-size: 12px;
+      left: 240px;
+      top: 8px;
+    }
+    a.btn-download {
+      display: inline-block;
+      //border: 1px solid #f0f0f0;
+      height: 100%;
+      width: 50%;
+      text-align: center;
+      line-height: 100px;
+      text-decoration: none;
+      &[disabled],
+      &[disabled]:hover {
+        cursor: not-allowed;
+        color: #ccc;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+      i {
+        font-size: 40px;
+      }
+    }
+  }
+}
+.article {
+  position: relative;
+  text-align: center;
+  height: 430px;
+  width: 800px;
+  margin: -50px auto 30px;
+  pre {
+    text-align: center;
+    height: 100%;
+    padding: 10px;
+    font-family: "SentyZHAO";
+    line-height: 1.8em;
+    writing-mode: tb-rl;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+    margin: 0 auto;
+    font-size: 30px;
+    overflow: hidden;
+  }
+  .author {
+    font-family: "SentyZHAO";
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: transparent url('/img/bg.jpg') left top no-repeat;
+    background-size: 80px 80px;
+    color: #fff;
+    line-height: 80px;
+    bottom: 20px;
+    font-size: 22px;
+    right: -20px;
+  }
+}

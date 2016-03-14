@@ -73,48 +73,64 @@
     </div>
     <div id="page-2" class="page page-2">
 
-      <div class="text-center">
-        <a class="usage-box" href="#">
-          <span class="entry">用法</span>
-          <ul class="usage-list">
-            <li>1. 编辑下方左边输入框，输入你想提取的</li>
-            <li>2. 上传 ttf 格式的字体</li>
-            <li>3. 下载字体和样式</li>
-            <li>PS: 如果你想提取全部字体，清空输入框再上传即可</li>
-          </ul>
-        </a>
-      </div>
       <div class="inner-page-2">
 
-        <div class="box clearfix">
-          <div class="box-edit pull-left">
-            <textarea id="edit" placeholder="输入框为空，将提取全部字体" ng-model="vm.text"></textarea>
+        <div class="box">
+
+          <div class="box-header">
+            <h2 class="text-center">
+              提取字体
+            </h2>
+
+            <a class="usage-box" href="#">
+              <i class="icon-info entry"></i>
+              <ul class="usage-list">
+                <li>1. 编辑下方左边输入框，输入你想提取的</li>
+                <li>2. 上传 ttf 格式的字体</li>
+                <li>3. 下载字体和样式</li>
+                <li>PS: 如果你想提取全部字体，清空输入框再上传即可</li>
+              </ul>
+            </a>
+
           </div>
-          <div class="box-edit pull-right">
-            <textarea id="preview" class="preview" placeholder="" ng-model="vm.text"></textarea>
-          </div>
-        </div>
 
-        <div class="upload-box">
-          <div ngf-select="vm.uploadFiles($files)" ngf-drop="vm.uploadFiles($files)" accept=".ttf" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true">
-
-            <div ng-show="vm.status==='INIT'" class="icon-add">+</div>
-
-            <div ng-show="vm.status==='UPLOADING'" class="spinner">
-              <div class="bounce1"></div>
-              <div class="bounce2"></div>
-              <div class="bounce3"></div>
+          <div class="box-body clearfix">
+            <div class="box-edit pull-left">
+              <textarea id="edit" placeholder="输入框为空，将提取全部字体" ng-model="vm.text"></textarea>
             </div>
-            <span ng-show="vm.status==='UPLOADING'" class="progress-percentage">{{vm.progressPercentage}}</span>
+            <div class="box-edit pull-right preview">
+              <textarea id="preview" class="preview" placeholder="" ng-model="vm.text"></textarea>
+            </div>
+          </div>
 
-            <div ng-cloak ng-show="vm.status==='SUCCESS'" class="tip-success">上传成功</div>
+          <div class="box-footer clearfix">
+            <div class="upload-box pull-left">
+
+              <div ngf-select="vm.uploadFiles($files)" ngf-drop="vm.uploadFiles($files)" accept=".ttf" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true">
+
+                <div ng-show="vm.status==='INIT'" class="icon-upload"></div>
+
+                <div ng-show="vm.status==='UPLOADING' || vm.status==='UPLOADED'" class="spinner">
+                  <div class="bounce1"></div>
+                  <div class="bounce2"></div>
+                  <div class="bounce3"></div>
+                </div>
+
+                <span ng-show="vm.status==='UPLOADING'" class="progress-percentage">{{vm.progressPercentage}}</span>
+
+                <span ng-show="vm.status==='UPLOADED'" class="progress-percentage">字体处理中</span>
+
+                <div ng-cloak ng-show="vm.status==='SUCCESS'" class="tip-success">上传成功，再次上传</div>
+
+              </div>
+            </div>
+
+            <a ng-disabled="vm.status!=='SUCCESS'" class="btn-download  pull-right" ng-href="{{vm.downloadUrl}}" download target="_blank"><i class="icon-download"></i></a>
 
           </div>
+
         </div>
 
-        <div ng-cloak ng-show="vm.status==='SUCCESS'" class="text-center result-box">
-          <a class="btn-download" ng-href="{{vm.downloadUrl}}" download target="_blank">下载字体</a>
-        </div>
       </div>
     </div>
 

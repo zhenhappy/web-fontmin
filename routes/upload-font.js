@@ -62,13 +62,14 @@ function handleFont(req, res) {
   } else {
     fontmin = new Fontmin()
       .src(output)
-      .use(rename(originalname))
       .use(Fontmin.glyph())
+      .use(rename(originalname))
       .use(Fontmin.ttf2eot()) // eot 转换插件
       .use(Fontmin.ttf2woff()) // woff 转换插件
       .use(Fontmin.ttf2svg()) // svg 转换插件
       .use(Fontmin.css({ fontPath: fontPath, asFileName: true })) // css 生成插件
       .dest(dest);
+
   }
 
   runFontmin(fontmin)

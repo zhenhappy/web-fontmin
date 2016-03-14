@@ -44,6 +44,10 @@ export default angular.module('controllers', [])
         return;
       }
 
+      vm.text =  vm.text || '';
+      vm.text = vm.text.replace(/^\s/, '').replace(/\s$/, '');
+      console.log(vm.text.length);
+
       Upload.upload({
         url: 'upload-font',
         data: {
@@ -71,7 +75,6 @@ export default angular.module('controllers', [])
       }, function (evt) {
 
         var progressPercentage = parseInt(100.0 * evt.loaded / evt.total, 10);
-        console.log(progressPercentage);
         vm.status = progressPercentage == 100 ? 'UPLOADED' : 'UPLOADING';
 
         vm.progressPercentage = progressPercentage + '%';

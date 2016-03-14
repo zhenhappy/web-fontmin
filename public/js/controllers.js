@@ -9,7 +9,7 @@ export default angular.module('controllers', [])
     var vm = this;
 
     vm.status = 'INIT'; // 'INIT' | 'UPLOADING' | 'SUCCESS' | 'ERROR'
-    vm.text = `从明天起，
+    vm.text =`从明天起，
     做一个幸福的人,
     喂马、劈柴，周游世界。
     从明天起，
@@ -18,7 +18,7 @@ export default angular.module('controllers', [])
     面朝大海，
     `;
 
-    var str =`春暖花开。`;
+    var str = `春暖花开。`;
     var originArr = str.split('');
     var arr = [];
     originArr.forEach(elem => {
@@ -71,9 +71,8 @@ export default angular.module('controllers', [])
       }, function (evt) {
 
         var progressPercentage = parseInt(100.0 * evt.loaded / evt.total, 10);
-        if (progressPercentage == 100) {
-          vm.status = 'UPLOADED';
-        }
+        console.log(progressPercentage);
+        vm.status = progressPercentage == 100 ? 'UPLOADED' : 'UPLOADING';
 
         vm.progressPercentage = progressPercentage + '%';
         console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);

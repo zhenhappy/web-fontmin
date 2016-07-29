@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>
+    XG SDK App Center
+  </title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <%- include('partials/lib-css') -%>
+
+  <!-- build:css /css/user.min.css -->
+  <link rel="stylesheet" href="/css/main-user.css" />
+  <!-- endbuild -->
+</head>
+
+<body class="user fixed">
+  <dashboard-navbar></dashboard-navbar>
+  <div class="user-view-wrapper" ui-view>
+  </div>
+</body>
+
+
+<%- include('partials/lib-js-common') -%>
+
+<!-- build:js /js/user.min.js -->
+<script src="js/template-user.js"></script>
+<script src="js/main-user.js"></script>
+<!-- endbuild -->
+
+</html>

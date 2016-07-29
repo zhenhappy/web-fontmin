@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<script type="application/javascript">
+
+  function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ''])[1].replace(/\+/g, '%20')) || null;
+  }
+
+  parent.angular.element(parent.$('.setting')).scope().vm.umengLoginCallback({
+    oauthToken: getURLParameter('oauth_token'),
+    oauthVerifier: getURLParameter('oauth_verifier')
+  });
+</script>
+</body>
+</html>

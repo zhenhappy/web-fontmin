@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    xgsdk下载中心
+  </title>
+  <%- include('partials/lib-css') -%>
+  <!-- build:css /css/public.min.css -->
+  <link rel="stylesheet" href="/css/main-public.css" />
+  <!-- endbuild -->
+</head>
+
+<body>
+<%- include('partials/navbar-public') -%>
+<div ng-controller="DownloadController as vm" style="margin-top:50px;">
+  <div class="login-box text-center" style="width:500px;">
+    <p style="font-size:20px;">
+      请前往<a href="/#/download-app">https://www.xgsdk.com/#/download-app</a>下载
+    </p>
+  </div>
+</div>
+<%- include('partials/lib-js-common') -%>
+<!-- build:js /js/public.min.js -->
+<script src="js/template-user.js"></script>
+<script src="js/main-public.js"></script>
+<!-- endbuild -->
+
+<script language="javascript" type="text/javascript">
+  window.location.href='/#/download-app';
+</script>
+
+</body>
+</html>

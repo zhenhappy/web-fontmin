@@ -1,0 +1,113 @@
+<nav class="navbar navbar-default navbar-fixed-top navbar-public">
+  <div class="container" style="width:100%; padding:0;" ng-controller="TranslateController as vm">
+    <div class="navbar-header" style="width:180px;">
+      <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/#/"><img src="img/logo-b.png" style="width:110px;height:16px; margin-top:2px; margin-left: 35px;"/></a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="nav navbar-nav">
+
+        <li class="service-menu-public">
+          <a class="business access" class="tooltip-demo">
+            <i class="icon-add-to-list"></i>
+            <span ng-bind="SERVICE_MENU_NAME"></span>
+            <span class="icon-chevron-down"></span>
+          </a>
+          <div class="service-menu-content">
+            <ul class="service-menu-list list-inline" check-sign-entry ng-class="{
+                'is-access': vm.serviceType === '渠道接入',
+                'is-user':  ((vm.serviceType === '服务') && (vm.path != '' && vm.path != 'download-app')),
+                'is-public': vm.serviceType === '服务' && (vm.path == '' || vm.path == 'download-app')
+              }">
+
+              <li>
+                <a href="distribution"><span ng-bind="SERVICE_MENU_DISTRIBUTION"></span></a>
+              </li>
+              <li>
+                <a dev-tip><span ng-bind="SERVICE_MENU_INTERNAL_TEST"></span></a>
+              </li>
+              <li>
+                <a href="/#/access-app"><span ng-bind="SERVICE_MENU_ACCESS"></span></a>
+              </li>
+              <li>
+                <a href="/#/analysis-app"><span ng-bind="SERVICE_MENU_STATISTICS"></span></a>
+              </li>
+              <li>
+                <a href="message"><span ng-bind="SERVICE_MENU_PUSH"></span></a>
+              </li>
+              <li>
+                <a href="share"><span ng-bind="SERVICE_MENU_SHARE"></span></a>
+              </li>
+              <li>
+                <a href="update"><span ng-bind="SERVICE_MENU_UPDATE"></span></a>
+              </li>
+              <li>
+                <a href="operation"><span ng-bind="SERVICE_MENU_TOOL"></span></a>
+              </li>
+            </ul>
+            <ul class="service-menu-list list-inline hide" check-sign-show ng-class="{
+                'is-access': vm.serviceType === '渠道接入',
+                'is-user':  ((vm.serviceType === '服务') && (vm.path != '' && vm.path != 'download-app')),
+                'is-public': vm.serviceType === '服务' && (vm.path == '' || vm.path == 'download-app')
+              }">
+
+              <li>
+                <a href="distribution"><span ng-bind="SERVICE_MENU_DISTRIBUTION"></span></a>
+              </li>
+              <li>
+                <a dev-tip><span ng-bind="SERVICE_MENU_INTERNAL_TEST"></span></a>
+              </li>
+              <li>
+              </li>
+              <a href="access"><span ng-bind="SERVICE_MENU_ACCESS"></span></a>
+              <li>
+                <a href="stats"><span ng-bind="SERVICE_MENU_STATISTICS"></span></a>
+              </li>
+              <li>
+                <a href="message"><span ng-bind="SERVICE_MENU_PUSH"></span></a>
+              </li>
+              <li>
+                <a href="share"><span ng-bind="SERVICE_MENU_SHARE"></span></a>
+              </li>
+              <li>
+                <a href="update"><span ng-bind="SERVICE_MENU_UPDATE"></span></a>
+              </li>
+              <li>
+                <a href="operation"><span ng-bind="SERVICE_MENU_TOOL"></span></a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a href="/doc/" target="_blank">
+            <i class="icon-help-with-circle"></i>
+            <span ng-bind="WORD_MENU_NAME"></span>
+        </a>
+        </li>
+        <li>
+          <a href="/#/download-app" target="_blank">
+            <i class="icon-download "></i>
+            <span ng-bind="DOWNLOAD_MENU_NAME"></span>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav pull-right" check-sign-entry >
+        <li class="user user-menu">
+          <a href="/user#/account/login"><span ng-bind="LOGIN_BTN"></span></a>
+        </li>
+        <li class="user user-menu">
+          <a href="/user#/account/register"><span ng-bind="REGISTER_BTN"></span></a>
+        </li>
+      </ul>
+      <user-menu is-public="true"></user-menu>
+      <lang></lang>
+    </div>
+  </div>
+</nav>

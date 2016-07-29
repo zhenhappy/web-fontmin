@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>XG SDK Portal</title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+  <%- include('partials/lib-css') -%>
+
+  <!-- build:css /css/distribution-access.min.css -->
+  <link rel="stylesheet" href="/css/main-access.css" />
+  <!-- endbuild -->
+
+  <!-- build:css /css/distribution.min.css -->
+  <link rel="stylesheet" href="/css/main-common.css" />
+  <link rel="stylesheet" href="/css/main-distribution.css" />
+  <!-- endbuild -->
+</head>
+
+<body class="fixed sidebar-mini skin-blue" network-monitor="">
+
+  <%- include('partials/loading') -%>
+  <%- include('partials/error-tip') -%>
+
+  <dashboard-navbar></dashboard-navbar>
+<!--
+  <toaster-container></toaster-container> -->
+
+  <div class="wrapper">
+    <distribution-sidebar></distribution-sidebar>
+
+    <content-nav></content-nav>
+
+    <div id="content-wrapper" class="content-wrapper distribution" ui-view=""></div>
+    <div class="control-sidebar-bg"></div>
+  </div>
+
+  <div class="calendar-origin-style"></div>
+
+  <%- include('partials/lib-js-common') -%>
+
+
+
+  <!-- build:js /js/distribution.min.js -->
+  <script src="/js/ks3jssdk.js"></script>
+  <script src="/js/plupload.full.min.js"></script>
+
+  <script src="/js/template-distribution.js"></script>
+  <script src="/js/main-distribution.js"></script>
+  <!-- endbuild -->
+
+  <script type="text/javascript">
+    window.XGSDK.initDistribution();
+  </script>
+
+</body>
+
+</html>

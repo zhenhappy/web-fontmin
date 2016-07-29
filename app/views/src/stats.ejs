@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>XG SDK Portal</title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+  <%- include('partials/lib-css') -%>
+
+  <!-- build:css /css/stats.min.css -->
+  <link rel="stylesheet" href="/css/main-common.css" />
+  <link rel="stylesheet" href="/css/main-stats.css" />
+  <!-- endbuild -->
+</head>
+
+<body class="fixed sidebar-mini skin-blue" network-monitor="">
+
+  <%- include('partials/error-tip') -%>
+  <%- include('partials/loading') -%>
+
+  <dashboard-navbar></dashboard-navbar>
+
+  <div class="wrapper">
+    <stats-sidebar></stats-sidebar>
+    <div id="content-wrapper" class="content-wrapper" ui-view=""></div>
+
+    <div class="control-sidebar-bg"></div>
+  </div>
+  <div class="calendar-origin-style"></div>
+
+  <%- include('partials/lib-js-common') -%>
+
+  <!-- build:js /js/stats.min.js -->
+  <script src="/js/template-stats.js"></script>
+  <script src="/js/main-stats.js"></script>
+  <!-- endbuild -->
+
+  <script src="//webapi.amap.com/maps?v=1.3&key=399d60b38db360668df79d9824274dc5"></script>
+
+  <script type="text/javascript">
+    window.XGSDK.initStats();
+  </script>
+
+
+</body>
+
+</html>

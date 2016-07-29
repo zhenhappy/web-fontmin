@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>XG SDK Portal</title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+  <%- include('partials/lib-css') -%>
+
+  <!-- build:css /css/share.min.css -->
+  <link rel="stylesheet" href="/css/main-common.css" />
+  <link rel="stylesheet" href="/css/main-share.css" />
+  <!-- endbuild -->
+</head>
+
+<body class="fixed sidebar-mini skin-blue" network-monitor="" ng-controller="AppController as shareApp"> 
+
+  <%- include('partials/error-tip') -%>
+  <%- include('partials/loading') -%>
+
+  <dashboard-navbar></dashboard-navbar>
+
+  <div class="wrapper share-app">
+    <share-siderbar></share-siderbar>
+    <div id="content-wrapper" class="content-wrapper" ui-view=""></div>
+
+    <div class="control-sidebar-bg"></div>
+  </div>
+  <div class="calendar-origin-style"></div>
+
+  <%- include('partials/lib-js-common') -%>
+
+  <!-- build:js /js/share.min.js -->
+  <script src="/js/template-share.js"></script>
+  <script src="/js/main-share.js"></script>
+  <!-- endbuild -->
+
+  <script type="text/javascript">
+    window.XGSDK.initShare();
+  </script>
+
+
+</body>
+
+</html>

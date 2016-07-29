@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    xgsdk首页
+  </title>
+  <%- include('partials/lib-css') -%>
+
+  <!-- build:css /css/public.min.css -->
+  <link rel="stylesheet" href="/css/main-public.css" />
+  <!-- endbuild -->
+</head>
+
+<body>
+  <%- include('partials/navbar-public') -%>
+  <!--推荐谷歌浏览器-->
+  <is-chrome></is-chrome>
+  <!--推荐谷歌浏览器-->
+  <div class="index-content container">
+    <div class="wrapper">
+        <div ui-view>
+
+        </div>
+        <div class="footer hide" foot-set-time-show>
+          <div class="mod-content">
+              <p>
+                  <a>联系我们</a><span>|</span>
+                  <a>投诉举报</a><span>|</span>
+                  <a>Complaint Guidelines</a><span>|</span>
+                  <a>金山网络科技有限公司</a>
+              </p>
+              <p>
+                Copyright © 2014 - 2015 KINGSOFT XGSDK.COM. All Rights Reserved.
+              </p>
+              <p>粤 ICP 备 15022737号-1</p>
+          </div>
+        </div>
+    </div>
+  </div>
+</body>
+
+<%- include('partials/lib-js-common') -%>
+<!-- build:js /js/public.min.js -->
+  <script src="/js/template-public.js"></script>
+  <script src="js/main-public.js"></script>
+<!-- endbuild -->
+
+</html>

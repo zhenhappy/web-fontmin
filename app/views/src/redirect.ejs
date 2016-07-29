@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    跳转
+  </title>
+  <%- include('partials/lib-css') -%>
+  <%- include('partials/lib-js-common') -%>
+</head>
+
+<body>
+  redirecting..
+  <script type="text/javascript">
+    'use strict';
+
+    function getURLParameter(name) {
+      return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ''])[1].replace(/\+/g, '%20')) || null;
+    }
+
+    function getSign(obj) {
+      var arr = [];
+
+      var sortedArr = Object.keys(obj).sort();
+      for (var i = 0; i < sortedArr.length; i++) {
+        if (obj[sortedArr[i]] !== '' && obj[sortedArr[i]] !== null && obj[sortedArr[i]] !== undefined && obj[sortedArr[i]] !== 'undefined' &&  sortedArr[i]!== '$promise' && sortedArr[i] !== '$resolved') {
+          arr.push(sortedArr[i] + '=' + obj[sortedArr[i]]);
+        }
+      }
+
+      var str = arr.join('&');
+      var sign = CryptoJS.HmacSHA1(str, 'xgsdkNiuxgsdkNiu').toString();
+      return sign;
+    }
+
+    var accessToken = getURLParameter('accessToken');
+    if (!accessToken) {
+      console.log('no access token');
+      localStorage.accessToken = '';
+      document.cookie = ('accessToken=' + '');
+      location = '/user#/account/login';
+    } else {
+      var params = {
+        ts: moment(new Date()).format('YYYYMMDDHHmmss'),
+        accessToken: accessToken,
+        requestSystem: 'sdkportal',
+        type: 'verify-session'
+      };
+      var sign = getSign(params);
+      var paramsWithSign = angular.extend(params, {sign:sign});
+
+      $.ajax({
+        type: 'POST',
+        url: '/user/verify-session',
+        data: JSON.stringify(paramsWithSign),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: function(data) {
+          console.log(arguments);
+          if(data.code == 0) {
+            localStorage.accessToken = accessToken;
+            document.cookie = ('accessToken=' + accessToken);
+            location = location.hash.substring(1);
+          } else {
+            console.log('access token is invalid');
+            localStorage.accessToken = accessToken;
+            document.cookie = ('accessToken=' + accessToken);
+            location = '/user#/account/login';
+          }
+        },
+        error: function() {
+          console.log('verify access token request fail');
+          localStorage.accessToken = accessToken;
+          document.cookie = ('accessToken=' + accessToken);
+          location = '/user#/account/login';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

@@ -31,13 +31,22 @@ $ npm install --production --registry=https://registry.npm.taobao.org
 $ NODE_ENV=production node ./bin/www
 ```
 
-### Docker
+### Docker Build
 
-如果想要通过编译Docker镜像使用, 可按照以下步骤配置Docker生产环境。
+如果想要通过编译Docker镜像使用, 可按照以下步骤配置Docker编译环境。
 
 ```bash
 $ docker image build -t web-fontmin .
 $ docker container run --restart=always -d -p [port]:3000 -it web-fontmin
+```
+
+### Docker
+
+如果想要直接拉取Docker镜像使用, 可按照以下步骤配置Docker生产环境。
+
+```bash
+$ docker pull zhenhappy/web-fontmin
+$ docker container run --restart=always -d -p [port]:3000 -it zhenhappy/web-fontmin
 ```
 
 ### License

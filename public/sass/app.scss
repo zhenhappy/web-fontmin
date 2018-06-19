@@ -91,6 +91,7 @@ a {
   //background: #B18E6F;
   background: #fff;
   position: relative;
+  height: 100vh;
   //width: 100%;
   &.page-1 {
     background: #fff;
@@ -109,10 +110,9 @@ a {
   .wrap {
     overflow: hidden;
     width: 100%;
-    height: 570px;
+    height: 100vh;
     position: absolute;
-    top: 50%;
-    margin-top: -300px;
+    top: 10vh;
   }
   .btn-use {
     display: inline-block;

@@ -2,6 +2,10 @@
 
 Web Fontmin 可以让你可以在线提取字体，基于 Fontmin 构建。
 
+### 在线体验
+
+[fontmin.zhenhappy.com](https://fontmin.zhenhappy.com)
+
 ### Screenshot
 
 ![page-1](https://raw.githubusercontent.com/zhenhappy/web-fontmin/master/public/img/page-1.png)

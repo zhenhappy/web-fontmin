@@ -40,7 +40,7 @@ $ docker image build -t web-fontmin .
 $ docker container run --restart=always -d -p [port]:3000 -it web-fontmin
 ```
 
-### Docker
+### Docker Pull
 
 如果想要直接拉取Docker镜像使用, 可按照以下步骤配置Docker生产环境。
 
